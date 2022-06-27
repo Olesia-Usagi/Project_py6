@@ -1,0 +1,3 @@
+[console_scripts]
+parse_folder = parse_folder.main:start
+
