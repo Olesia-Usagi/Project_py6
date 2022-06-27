@@ -13,8 +13,14 @@ for c, l in zip(CYRILLIC_SYMBOLS, TRANSLATION):
 
 
 def normalize(name: str) -> str:
-    t_name = name.translate(TRANS)
-    # Заменяет все символы кроме латинских букв, цифр на '_'.
-    t_name = re.sub(r'\W', '_', t_name)
-    return t_name
+     global TRANS
+    normalized = ''
+    nums = '1234567890'
+    for i in name:
+        if i.isalpha() is False and i not in nums and not ".":
+            i = '_'
+            normalized += i
+        else:
+            normalized += i
+    return normalized.translate(TRANS)
 
