@@ -47,6 +47,17 @@ def handle_folders(folder: Path):
     except OSError:
         print(f'The {folder} could not be deleted.')
 
+        
+def count_file(folder: Path):
+    if not os.path.exists(folder):
+        print('This path does not exist!')
+        return False
+    count = 0
+    for currentFolderName, SubFolderNames, FileNames in os.walk(folder):
+        for FileName in FileNames:
+            count += 1
+    return count        
+
 
 def main(folder: Path):
     parser.scan(folder)
@@ -165,4 +176,9 @@ if __name__ == '__main__':
         main(folder_for_scan.resolve())
         print('Names of files was changed to latin.')
         print(f'Show all sorted extensions :\n{parser.EXTENSIONS}')
-        print(f'Unknown files of types:\n{parser.UNKNOWN}')
+        if parser.UNKNOWN == set():
+            print(f'All {count_file(folder_for_scan)} files sorted successfully!')
+        else:
+            print(f'Unknown files of types:\n{parser.UNKNOWN}\nwere moved to {handle_other.__name__}.')
+            print(f'All {count_file(folder_for_scan)} files sorted successfully!')
+
