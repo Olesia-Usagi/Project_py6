@@ -175,10 +175,10 @@ if __name__ == '__main__':
         print(f'Start in folder {folder_for_scan.resolve()}')
         main(folder_for_scan.resolve())
         print('Names of files was changed to latin.')
-        print(f'Show all sorted extensions :\n{parser.EXTENSIONS}')
+        print(f'All sorted extensions :\n{parser.EXTENSIONS}')
         if parser.UNKNOWN == set():
-            print(f'All {count_file(folder_for_scan)} files sorted successfully!')
+            print(f'{count_file(folder_for_scan)} files sorted successfully!')
         else:
-            print(f'Unknown files of types:\n{parser.UNKNOWN}\nwere moved to {handle_other.__name__}.')
-            print(f'All {count_file(folder_for_scan)} files sorted successfully!')
+            print(f'All unknown files of types:\n{parser.UNKNOWN}\nwere moved to {handle_other.__name__}.')
+            print(f'{count_file(folder_for_scan)} files sorted successfully!')
 
